@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WebApi.Data.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
+var webApiAdContext = builder.Configuration.GetConnectionString(nameof(WebApiAdContext));
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(webApiAdContext));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
