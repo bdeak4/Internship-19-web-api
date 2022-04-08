@@ -9,7 +9,7 @@ public class Ad
     public string City { get; set; } = string.Empty;
     public string County { get; set; } = string.Empty;
     public string Street { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
     
     public int CategoryId { get; set; }
     public AdCategory? Category { get; set; }

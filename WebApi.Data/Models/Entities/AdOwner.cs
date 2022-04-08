@@ -7,7 +7,7 @@ public class AdOwner
     public string LastName { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public ICollection<Ad> Ads { get; set; } = new List<Ad>();
 }

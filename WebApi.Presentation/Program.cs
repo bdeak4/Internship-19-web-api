@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data.Models;
+using WebApi.Domain.Repositories.Implementations;
+using WebApi.Domain.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ var webApiAdContext = builder.Configuration.GetConnectionString(nameof(WebApiAdC
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(webApiAdContext));
+builder.Services.AddTransient<IAdRepository, AdRepository>();
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

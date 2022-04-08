@@ -7,7 +7,7 @@ public class AdCategory
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public CategoryType Type { get; set; } = CategoryType.Other;
-    public DateTime CreatedAt { get; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
     
     public ICollection<Ad> Ads { get; set; } = new List<Ad>();
 }
