@@ -10,8 +10,8 @@ public class AdModel
     public string City { get; set; } = string.Empty;
     public string County { get; set; } = string.Empty;
     public string Street { get; set; } = string.Empty;
-    public int CategoryId { get; set; }
-    public int OwnerId { get; set; }
+    public int? CategoryId { get; set; }
+    public int? OwnerId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 

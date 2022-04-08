@@ -20,7 +20,7 @@ public class AdRepository : IAdRepository
             .Ads
             .Select(ad => ad.ProjectToResponseModel())
             .ToList();
-
+        
         return ads;
     }
 

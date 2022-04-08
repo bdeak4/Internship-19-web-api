@@ -11,9 +11,9 @@ public class Ad
     public string Street { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
     public AdCategory? Category { get; set; }
     
-    public int OwnerId { get; set; }
+    public int? OwnerId { get; set; }
     public AdOwner? Owner { get; set; }
 }
