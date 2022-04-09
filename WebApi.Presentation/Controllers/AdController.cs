@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Domain.Models;
+using WebApi.Domain.Repositories.Enums;
 using WebApi.Domain.Repositories.Interfaces;
 
 namespace WebApi.Controllers;
@@ -16,9 +17,19 @@ public class AdController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    
+    public IActionResult GetAll(string? title, int? minPrice, int? maxPrice, int? categoryId, string? county, string? city, SortType? sort)
     {
-        var ads = _adRepository.GetAds();
+        var filter = new AdFilterModel
+        {
+            Title = title,
+            MinPrice = minPrice,
+            MaxPrice = maxPrice,
+            CategoryId = categoryId,
+            County = county,
+            City = city
+        };
+        var ads = _adRepository.GetAds(filter, sort);
 
         return Ok(ads);
     }

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data.Models;
 using WebApi.Domain.Models;
+using WebApi.Domain.Repositories.Enums;
 using WebApi.Domain.Repositories.Interfaces;
 
 namespace WebApi.Domain.Repositories.Implementations;
@@ -14,11 +15,13 @@ public class AdRepository : IAdRepository
         _webApiAdContext = webApiAdContext;
     }
 
-    public List<AdResponseModel> GetAds()
+    public List<AdFilterResponseModel> GetAds(AdFilterModel filter, SortType? sort)
     {
         var ads = _webApiAdContext
             .Ads
-            .Select(ad => ad.ProjectToResponseModel())
+            .ApplyFilter(filter)
+            .ApplySort(sort)
+            .Select(ad => ad.ProjectToFilterResponseModel())
             .ToList();
         
         return ads;

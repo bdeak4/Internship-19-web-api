@@ -26,6 +26,14 @@ public class AdDetailResponseModel : AdResponseModel
     public AdOwnerResponseModel? Owner { get; set; }
 }
 
+public class AdFilterResponseModel
+{
+    public int Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public int Price { get; set; }
+}
+
 public static class AdExtensionMethods
 {
     public static Ad ProjectToAd(this AdModel model)
@@ -59,7 +67,7 @@ public static class AdExtensionMethods
             CreatedAt = ad.CreatedAt,
         };
     }
-    
+
     public static AdDetailResponseModel ProjectToDetailResponseModel(this Ad ad)
     {
         return new AdDetailResponseModel
@@ -76,6 +84,17 @@ public static class AdExtensionMethods
             CreatedAt = ad.CreatedAt,
             Category = ad.Category?.ProjectToResponseModel(),
             Owner = ad.Owner?.ProjectToResponseModel(),
+        };
+    }
+
+    public static AdFilterResponseModel ProjectToFilterResponseModel(this Ad ad)
+    {
+        return new AdFilterResponseModel
+        {
+            Id = ad.Id,
+            Title = ad.Title,
+            Description = ad.Description.Length > 100 ? ad.Description.Substring(0, 100) : ad.Description,
+            Price = ad.Price,
         };
     }
 }
