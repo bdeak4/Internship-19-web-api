@@ -20,6 +20,8 @@ builder.Services.AddTransient<IAdCategoryRepository, AdCategoryRepository>();
 builder.Services.AddTransient<IAdOwnerRepository, AdOwnerRepository>();
 builder.Services.AddFluentValidation();
 builder.Services.AddTransient<IValidator<AdModel>, AdModelValidator>();
+builder.Services.AddTransient<IValidator<AdCategoryModel>, AdCategoryModelValidator>();
+builder.Services.AddTransient<IValidator<AdOwnerModel>, AdOwnerModelValidator>();
 
 builder.Services.AddSwaggerGen(options =>
 {
