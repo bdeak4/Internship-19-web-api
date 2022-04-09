@@ -1,8 +1,12 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using WebApi.Data.Models;
+using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Implementations;
 using WebApi.Domain.Repositories.Interfaces;
+using WebApi.Domain.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,8 @@ builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(w
 builder.Services.AddTransient<IAdRepository, AdRepository>();
 builder.Services.AddTransient<IAdCategoryRepository, AdCategoryRepository>();
 builder.Services.AddTransient<IAdOwnerRepository, AdOwnerRepository>();
+builder.Services.AddFluentValidation();
+builder.Services.AddTransient<IValidator<AdModel>, AdModelValidator>();
 
 builder.Services.AddSwaggerGen(options =>
 {

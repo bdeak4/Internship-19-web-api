@@ -9,4 +9,5 @@ public interface IAdCategoryRepository
     AdCategoryResponseModel AddAdCategory(AdCategoryModel model);
     AdCategoryResponseModel? EditAdCategory(int id, AdCategoryModel model);
     bool DeleteAdCategory(int id);
+    bool AdCategoryExists(int? id);
 }

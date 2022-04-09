@@ -93,4 +93,9 @@ public class AdRepository : IAdRepository
 
         return true;
     }
+
+    public bool AdExists(int? id)
+    {
+        return _webApiAdContext.Ads.Find(id) != null;
+    }
 }

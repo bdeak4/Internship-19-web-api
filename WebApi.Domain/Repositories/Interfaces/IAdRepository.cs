@@ -10,4 +10,5 @@ public interface IAdRepository
     AdResponseModel AddAd(AdModel model);
     AdResponseModel? EditAd(int id, AdModel model);
     bool DeleteAd(int id);
+    bool AdExists(int? id);
 }

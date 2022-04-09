@@ -9,4 +9,5 @@ public interface IAdOwnerRepository
     AdOwnerResponseModel AddAdOwner(AdOwnerModel model);
     AdOwnerResponseModel? EditAdOwner(int id, AdOwnerModel model);
     bool DeleteAdOwner(int id);
+    bool AdOwnerExists(int? id);
 }

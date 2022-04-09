@@ -82,4 +82,9 @@ public class AdOwnerRepository : IAdOwnerRepository
 
         return true;
     }
+    
+    public bool AdOwnerExists(int? id)
+    {
+        return _webApiAdContext.AdOwners.Find(id) != null;
+    }
 }

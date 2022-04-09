@@ -1,4 +1,5 @@
 using WebApi.Data.Models.Entities;
+using WebApi.Domain.Validators;
 
 namespace WebApi.Domain.Models;
 

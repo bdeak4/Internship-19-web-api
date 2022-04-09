@@ -80,4 +80,10 @@ public class AdCategoryRepository : IAdCategoryRepository
 
         return true;
     }
+    
+    public bool AdCategoryExists(int? id)
+    {
+        return _webApiAdContext.AdCategories.Find(id) != null;
+    }
+
 }
