@@ -22,8 +22,8 @@ public class AdResponseModel : AdModel
 
 public class AdDetailResponseModel : AdResponseModel
 {
-    public AdCategoryModel? Category { get; set; }
-    public AdOwnerModel? Owner { get; set; }
+    public AdCategoryResponseModel? Category { get; set; }
+    public AdOwnerResponseModel? Owner { get; set; }
 }
 
 public static class AdExtensionMethods

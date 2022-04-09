@@ -11,5 +11,5 @@ public class WebApiAdContext : DbContext
     
     public DbSet<Ad> Ads { get; set; }
     public DbSet<AdOwner> AdOwners { get; set; }
-    public DbSet<AdCategory> AdCategory { get; set; }
+    public DbSet<AdCategory> AdCategories { get; set; }
 }

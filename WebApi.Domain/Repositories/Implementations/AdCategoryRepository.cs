@@ -17,7 +17,7 @@ public class AdCategoryRepository : IAdCategoryRepository
     public List<AdCategoryResponseModel> GetAdCategories()
     {
         var adCategories = _webApiAdContext
-            .AdCategory
+            .AdCategories
             .Select(c => c.ProjectToResponseModel())
             .ToList();
         
@@ -27,7 +27,7 @@ public class AdCategoryRepository : IAdCategoryRepository
     public AdCategoryDetailResponseModel? GetAdCategoryById(int id)
     {
         var adCategory = _webApiAdContext
-            .AdCategory
+            .AdCategories
             .Include(c => c.Ads)
             .FirstOrDefault(c => c.Id == id);
 
@@ -43,7 +43,7 @@ public class AdCategoryRepository : IAdCategoryRepository
     {
         var adCategory = model.ProjectToAdCategory();
 
-        _webApiAdContext.AdCategory.Add(adCategory);
+        _webApiAdContext.AdCategories.Add(adCategory);
         _webApiAdContext.SaveChanges();
 
         return adCategory.ProjectToResponseModel();
@@ -51,7 +51,7 @@ public class AdCategoryRepository : IAdCategoryRepository
 
     public AdCategoryResponseModel? EditAdCategory(int id, AdCategoryModel model)
     {
-        var adCategory = _webApiAdContext.AdCategory.Find(id);
+        var adCategory = _webApiAdContext.AdCategories.Find(id);
 
         if (adCategory == null)
         {
@@ -68,14 +68,14 @@ public class AdCategoryRepository : IAdCategoryRepository
 
     public bool DeleteAdCategory(int id)
     {
-        var adCategory = _webApiAdContext.AdCategory.Find(id);
+        var adCategory = _webApiAdContext.AdCategories.Find(id);
 
         if (adCategory == null)
         {
             return false;
         }
 
-        _webApiAdContext.AdCategory.Remove(adCategory);
+        _webApiAdContext.AdCategories.Remove(adCategory);
         _webApiAdContext.SaveChanges();
 
         return true;
