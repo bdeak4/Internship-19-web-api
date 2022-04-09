@@ -63,7 +63,7 @@ public class AdCategoryController : ControllerBase
 
         if (!isSuccessful)
         {
-            return NotFound(id);
+            return BadRequest();
         }
 
         return Ok();

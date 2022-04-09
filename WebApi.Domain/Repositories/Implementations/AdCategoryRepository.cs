@@ -68,9 +68,12 @@ public class AdCategoryRepository : IAdCategoryRepository
 
     public bool DeleteAdCategory(int id)
     {
-        var adCategory = _webApiAdContext.AdCategories.Find(id);
+        var adCategory = _webApiAdContext
+            .AdCategories
+            .Include(c => c.Ads)
+            .FirstOrDefault(c => c.Id == id);
 
-        if (adCategory == null)
+        if (adCategory == null || adCategory.Ads.Count > 0)
         {
             return false;
         }

@@ -63,7 +63,7 @@ public class AdOwnerController : ControllerBase
 
         if (!isSuccessful)
         {
-            return NotFound(id);
+            return BadRequest();
         }
 
         return Ok();

@@ -28,8 +28,8 @@ public class AdOwnerRepository : IAdOwnerRepository
     {
         var adOwner = _webApiAdContext
             .AdOwners
-            .Include(c => c.Ads)
-            .FirstOrDefault(c => c.Id == id);
+            .Include(o => o.Ads)
+            .FirstOrDefault(o => o.Id == id);
 
         if (adOwner == null)
         {
@@ -70,9 +70,12 @@ public class AdOwnerRepository : IAdOwnerRepository
 
     public bool DeleteAdOwner(int id)
     {
-        var adOwner = _webApiAdContext.AdOwners.Find(id);
+        var adOwner = _webApiAdContext
+            .AdOwners
+            .Include(o => o.Ads)
+            .FirstOrDefault(o => o.Id == id);
 
-        if (adOwner == null)
+        if (adOwner == null || adOwner.Ads.Count > 0)
         {
             return false;
         }
