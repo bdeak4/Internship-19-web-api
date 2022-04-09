@@ -22,6 +22,7 @@ public class AdResponseModel : AdModel
 
 public class AdDetailResponseModel : AdResponseModel
 {
+    public int ViewCounter { get; set; }
     public AdCategoryResponseModel? Category { get; set; }
     public AdOwnerResponseModel? Owner { get; set; }
 }
@@ -81,6 +82,7 @@ public static class AdExtensionMethods
             Street = ad.Street,
             CategoryId = ad.CategoryId,
             OwnerId = ad.OwnerId,
+            ViewCounter = ad.ViewCounter,
             CreatedAt = ad.CreatedAt,
             Category = ad.Category?.ProjectToResponseModel(),
             Owner = ad.Owner?.ProjectToResponseModel(),

@@ -40,6 +40,9 @@ public class AdRepository : IAdRepository
             return null;
         }
 
+        ad.ViewCounter++;
+        _webApiAdContext.SaveChanges();
+
         return ad.ProjectToDetailResponseModel();
     }
 

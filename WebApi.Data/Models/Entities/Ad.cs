@@ -9,6 +9,7 @@ public class Ad
     public string City { get; set; } = string.Empty;
     public string County { get; set; } = string.Empty;
     public string Street { get; set; } = string.Empty;
+    public int ViewCounter { get; set; } = 0;
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     
     public int? CategoryId { get; set; }
