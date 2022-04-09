@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Data.Models;
 using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Interfaces;
 
@@ -58,7 +57,7 @@ public class AdController : ControllerBase
     }
     
     [HttpDelete("{id}")]
-    public IActionResult RemoveTodoItem(int id)
+    public IActionResult RemoveAd(int id)
     {
         var isSuccessful = _adRepository.DeleteAd(id);
 

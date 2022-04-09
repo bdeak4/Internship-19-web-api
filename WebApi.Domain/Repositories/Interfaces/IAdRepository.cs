@@ -1,4 +1,3 @@
-using WebApi.Data.Models.Entities;
 using WebApi.Domain.Models;
 
 namespace WebApi.Domain.Repositories.Interfaces;

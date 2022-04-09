@@ -11,6 +11,7 @@ var webApiAdContext = builder.Configuration.GetConnectionString(nameof(WebApiAdC
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(webApiAdContext));
 builder.Services.AddTransient<IAdRepository, AdRepository>();
+builder.Services.AddTransient<IAdCategoryRepository, AdCategoryRepository>();
 
 builder.Services.AddSwaggerGen();
 
