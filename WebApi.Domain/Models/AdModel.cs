@@ -12,18 +12,18 @@ public class AdModel
     public string Street { get; set; } = string.Empty;
     public int? CategoryId { get; set; }
     public int? OwnerId { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
 public class AdResponseModel : AdModel
 {
     public int Id { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
 public class AdDetailResponseModel : AdResponseModel
 {
     public AdCategoryModel? Category { get; set; }
-    public AdOwner? Owner { get; set; }
+    public AdOwnerModel? Owner { get; set; }
 }
 
 public static class AdExtensionMethods
@@ -40,7 +40,6 @@ public static class AdExtensionMethods
             Street = model.Street,
             CategoryId = model.CategoryId,
             OwnerId = model.OwnerId,
-            CreatedAt = model.CreatedAt,
         };
     }
     
@@ -76,7 +75,7 @@ public static class AdExtensionMethods
             OwnerId = ad.OwnerId,
             CreatedAt = ad.CreatedAt,
             Category = ad.Category?.ProjectToResponseModel(),
-            // TODO add owner here
+            Owner = ad.Owner?.ProjectToResponseModel(),
         };
     }
 }

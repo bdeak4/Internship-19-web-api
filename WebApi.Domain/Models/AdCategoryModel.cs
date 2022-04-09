@@ -7,17 +7,17 @@ public class AdCategoryModel
 {
     public string Title { get; set; } = string.Empty;
     public CategoryType Type { get; set; } = CategoryType.Other;
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
 public class AdCategoryResponseModel : AdCategoryModel
 {
     public int Id { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
-public class AdCategoryDetailResponseModel : AdResponseModel
+public class AdCategoryDetailResponseModel : AdCategoryResponseModel
 {
-    public ICollection<Ad> Ads { get; set; } = new List<Ad>();
+    public ICollection<AdResponseModel> Ads { get; set; } = new List<AdResponseModel>();
 }
 
 
@@ -29,7 +29,6 @@ public static class AdCategoryExtensionMethods
         {
             Title = model.Title,
             Type = model.Type,
-            CreatedAt = model.CreatedAt,
         };
     }
     
@@ -41,6 +40,18 @@ public static class AdCategoryExtensionMethods
             Title = adCategory.Title,
             Type = adCategory.Type,
             CreatedAt = adCategory.CreatedAt,
+        };
+    }
+    
+    public static AdCategoryDetailResponseModel ProjectToDetailResponseModel(this AdCategory adCategory)
+    {
+        return new AdCategoryDetailResponseModel
+        {
+            Id = adCategory.Id,
+            Title = adCategory.Title,
+            Type = adCategory.Type,
+            CreatedAt = adCategory.CreatedAt,
+            Ads = adCategory.Ads.Select(ad => ad.ProjectToResponseModel()).ToList()
         };
     }
 }

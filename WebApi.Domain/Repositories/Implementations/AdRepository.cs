@@ -67,7 +67,6 @@ public class AdRepository : IAdRepository
         ad.Street = model.Street;
         ad.CategoryId = model.CategoryId;
         ad.OwnerId = model.OwnerId;
-        ad.CreatedAt = model.CreatedAt;
 
         _webApiAdContext.SaveChanges();
 
