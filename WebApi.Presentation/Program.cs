@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using WebApi.Data.Models;
 using WebApi.Domain.Repositories.Implementations;
 using WebApi.Domain.Repositories.Interfaces;
@@ -14,7 +16,10 @@ builder.Services.AddTransient<IAdRepository, AdRepository>();
 builder.Services.AddTransient<IAdCategoryRepository, AdCategoryRepository>();
 builder.Services.AddTransient<IAdOwnerRepository, AdOwnerRepository>();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo {Title = "Web Api", Version = "v1"});
+});
 
 var app = builder.Build();
 
