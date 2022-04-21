@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,7 +21,11 @@ var jwtConfiguration = builder.Configuration.GetSection(nameof(JwtConfiguration)
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});;
 builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(webApiAdContext));
 
 builder.Services.AddTransient<IAdRepository, AdRepository>();
