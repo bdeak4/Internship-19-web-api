@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Data.Models;
 
@@ -11,9 +12,10 @@ using WebApi.Data.Models;
 namespace WebApi.Data.Migrations
 {
     [DbContext(typeof(WebApiAdContext))]
-    partial class WebApiAdContextModelSnapshot : ModelSnapshot
+    [Migration("20220421112540_AdOwnerAdaptForLogin")]
+    partial class AdOwnerAdaptForLogin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
