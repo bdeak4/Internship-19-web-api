@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using WebApi.Data.Models.Entities;
+using WebApi.Domain.Helpers;
 
 namespace WebApi.Domain.Models;
 
@@ -19,6 +21,24 @@ public class AdOwnerResponseModel : AdOwnerModel
 public class AdOwnerDetailResponseModel : AdOwnerResponseModel
 {
     public ICollection<AdResponseModel> Ads { get; set; } = new List<AdResponseModel>();
+}
+
+public class AdOwnerLoginModel
+{
+    [Required]
+    public string Email { get; set; } = String.Empty;
+    [Required]
+    public string Password { get; set; } = String.Empty;
+}
+
+public class AdOwnerRegisterModel
+{
+    [Required]
+    public string Email { get; set; } = String.Empty;
+    [Required]
+    public string Password { get; set; } = String.Empty;
+    [Required]
+    public string RepeatPassword { get; set; } = String.Empty;
 }
 
 public static class AdOwnerExtensionMethods
@@ -58,6 +78,15 @@ public static class AdOwnerExtensionMethods
             Email = adOwner.Email,
             CreatedAt = adOwner.CreatedAt,
             Ads = adOwner.Ads.Select(ad => ad.ProjectToResponseModel()).ToList()
+        };
+    }
+    
+    public static AdOwner ProjectToAdOwner(this AdOwnerRegisterModel model)
+    {
+        return new AdOwner
+        {
+            Email = model.Email.ToLower(),
+            Password = HashHelper.Hash(model.Password)
         };
     }
 }

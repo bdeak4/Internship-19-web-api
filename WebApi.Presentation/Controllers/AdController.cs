@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Enums;
@@ -7,6 +8,7 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class AdController : ControllerBase
 {
     private readonly IAdRepository _adRepository;

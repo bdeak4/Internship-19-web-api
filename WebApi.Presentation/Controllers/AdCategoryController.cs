@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Interfaces;
@@ -6,6 +7,7 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class AdCategoryController : ControllerBase
 {
     private readonly IAdCategoryRepository _adCategoryRepository;

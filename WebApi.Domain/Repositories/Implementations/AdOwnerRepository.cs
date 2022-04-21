@@ -1,17 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data.Models;
+using WebApi.Domain.Helpers;
 using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Interfaces;
+using WebApi.Domain.Services;
 
 namespace WebApi.Domain.Repositories.Implementations;
 
 public class AdOwnerRepository : IAdOwnerRepository
 {
     private readonly WebApiAdContext _webApiAdContext;
+    private readonly JwtService _jwtService;
 
-    public AdOwnerRepository(WebApiAdContext webApiAdContext)
+    public AdOwnerRepository(WebApiAdContext webApiAdContext, JwtService jwtService)
     {
         _webApiAdContext = webApiAdContext;
+        _jwtService = jwtService;
     }
 
     public List<AdOwnerResponseModel> GetAdOwners()
@@ -89,5 +93,52 @@ public class AdOwnerRepository : IAdOwnerRepository
     public bool AdOwnerExists(int? id)
     {
         return _webApiAdContext.AdOwners.Find(id) != null;
+    }
+
+    public string? Login(AdOwnerLoginModel model)
+    {
+        var user = _webApiAdContext
+            .AdOwners
+            .FirstOrDefault(u => u.Email == model.Email.ToLower());
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        var isValid = HashHelper.ValidatePassword(model.Password, user.Password);
+
+        if (!isValid)
+        {
+            return null;
+        }
+
+        var token = _jwtService.GetJwtToken(user.ProjectToDetailResponseModel());
+
+        return token;
+    }
+
+    public bool Register(AdOwnerRegisterModel model)
+    {
+        if (model.Password != model.RepeatPassword)
+        {
+            return false;
+        }
+
+        var isTaken = _webApiAdContext
+            .AdOwners
+            .Any(u => u.Email == model.Email.ToLower());
+
+        if (isTaken)
+        {
+            return false;
+        }
+
+        var user = model.ProjectToAdOwner();
+        _webApiAdContext.AdOwners.Add(user);
+        _webApiAdContext.SaveChanges();
+
+        return true;
+
     }
 }

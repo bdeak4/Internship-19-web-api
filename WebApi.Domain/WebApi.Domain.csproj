@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <PackageReference Include="FluentValidation" Version="10.4.0" />
+      <PackageReference Include="jose-jwt" Version="4.0.0" />
     </ItemGroup>
 
 </Project>
