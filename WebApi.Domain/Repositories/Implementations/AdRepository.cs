@@ -3,22 +3,26 @@ using WebApi.Data.Models;
 using WebApi.Domain.Models;
 using WebApi.Domain.Repositories.Enums;
 using WebApi.Domain.Repositories.Interfaces;
+using WebApi.Domain.Services;
 
 namespace WebApi.Domain.Repositories.Implementations;
 
 public class AdRepository : IAdRepository
 {
     private readonly WebApiAdContext _webApiAdContext;
+    private readonly UserProviderService _userProviderService;
 
-    public AdRepository(WebApiAdContext webApiAdContext)
+    public AdRepository(WebApiAdContext webApiAdContext, UserProviderService userProviderService)
     {
         _webApiAdContext = webApiAdContext;
+        _userProviderService = userProviderService;
     }
 
     public List<AdFilterResponseModel> GetAds(AdFilterModel filter, SortType? sort)
     {
         var ads = _webApiAdContext
             .Ads
+            .Where(a => a.OwnerId == _userProviderService.GetUserId())
             .ApplyFilter(filter)
             .ApplySort(sort)
             .Select(ad => ad.ProjectToFilterResponseModel())
@@ -31,6 +35,7 @@ public class AdRepository : IAdRepository
     {
         var ad = _webApiAdContext
             .Ads
+            .Where(a => a.OwnerId == _userProviderService.GetUserId())
             .Include(ad => ad.Category)
             .Include(ad => ad.Owner)
             .FirstOrDefault(ad => ad.Id == id);

@@ -27,6 +27,7 @@ builder.Services.AddControllersWithViews().AddJsonOptions(x =>
     x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });;
 builder.Services.AddDbContext<WebApiAdContext>(options => options.UseSqlServer(webApiAdContext));
+builder.Services.Configure<JwtConfiguration>(builder.Configuration.GetSection(nameof(JwtConfiguration)));
 
 builder.Services.AddTransient<IAdRepository, AdRepository>();
 builder.Services.AddTransient<IAdCategoryRepository, AdCategoryRepository>();
@@ -37,8 +38,9 @@ builder.Services.AddTransient<IValidator<AdModel>, AdModelValidator>();
 builder.Services.AddTransient<IValidator<AdCategoryModel>, AdCategoryModelValidator>();
 builder.Services.AddTransient<IValidator<AdOwnerModel>, AdOwnerModelValidator>();
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<JwtService>();
-builder.Services.Configure<JwtConfiguration>(builder.Configuration.GetSection(nameof(JwtConfiguration)));
+builder.Services.AddScoped<UserProviderService>();
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
