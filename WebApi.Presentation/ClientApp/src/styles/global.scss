@@ -1,0 +1,30 @@
+@use "sass:map";
+@import "variables";
+
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: unset;
+  color: map-get($colors, "fg");
+  background-color: map-get($colors, "bg");
+}
+
+.success {
+  color: map-get($colors, "success");
+}
+
+.error {
+  color: map-get($colors, "failure");
+}
