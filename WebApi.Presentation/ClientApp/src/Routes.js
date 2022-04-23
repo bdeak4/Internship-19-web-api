@@ -8,6 +8,7 @@ import AddAd from "./pages/Ads/AddAd";
 import EditAd from "./pages/Ads/EditAd";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
 
 import { UserContext } from "./providers/UserProvider";
 
@@ -27,6 +28,7 @@ const Routes = () => {
       <Route path="/ads" element={<Ads />} />
       <Route path="/ads/:id" element={<Ad />} />
       <Route path="/add" element={<AddAd />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   );
 
@@ -37,6 +39,7 @@ const Routes = () => {
       <Route path="/ads/:id" element={<Ad />} />
       <Route path="/ads/add" element={<AddAd />} />
       <Route path="/ads/:id/edit" element={<EditAd />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   );
 
