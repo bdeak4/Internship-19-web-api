@@ -1,2 +1,27 @@
 @use "sass:map";
 @import "../../styles/_variables";
+
+.row {
+  color: map-get($colors, "bg");
+  background-color: map-get($colors, "fg");
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.column {
+  width: 25%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.columns {
+  display: flex;
+  padding: 16px 24px;
+
+  & > * {
+    width: 25%;
+  }
+}

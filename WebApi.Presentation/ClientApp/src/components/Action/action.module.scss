@@ -15,3 +15,29 @@
     text-decoration: none;
   }
 }
+
+.action--danger {
+  color: map-get($colors, "bg");
+
+  &:hover {
+    color: map-get($colors, "failure");
+  }
+}
+
+.action--inverted {
+  color: map-get($colors, "bg");
+}
+
+.action--fill {
+  color: map-get($colors, "bg");
+  background-color: map-get($colors, "fg");
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: color 200ms ease-out, background-color 200ms ease-out;
+
+  &:hover {
+    color: map-get($colors, "fg");
+    background-color: map-get($colors, "main");
+  }
+}

@@ -8,7 +8,7 @@ import Loader from "src/components/Loader";
 import styles from "./ads.module.scss";
 
 const Ads = () => {
-  const columns = ["Title", "Description", "Actions"];
+  const columns = ["Title", "Price", "Description", "Actions"];
   const { data, error, isLoading, triggerReload } = useGetAds();
   const {
     handleRequest: handleDelete,
@@ -27,17 +27,23 @@ const Ads = () => {
 
   const rows = data
     ? data.map((data) => [
-        <span>{data.title}</span>,
+        <Action
+          variant="inverted"
+          renderAs="Link"
+          props={{ to: `/ads/${data.id}` }}
+        >
+          {data.title}
+        </Action>,
+        <span>{data.price} kn</span>,
         <span>{data.description}</span>,
         <div>
           <Action
+            variant="inverted"
             renderAs="Link"
-            variant="info"
             props={{ to: `/ads/${data.id}/edit` }}
           >
             Edit
-          </Action>
-
+          </Action>{" "}
           <Action
             variant="danger"
             props={{
@@ -56,7 +62,7 @@ const Ads = () => {
     <div className={styles.wrapper}>
       <div className={styles.heading}>
         <h1>Ads</h1>
-        <Action renderAs="Link" props={{ to: "/ads/add" }}>
+        <Action variant="fill" renderAs="Link" props={{ to: "/ads/add" }}>
           Add Ad
         </Action>
       </div>

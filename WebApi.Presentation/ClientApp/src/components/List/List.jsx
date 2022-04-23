@@ -9,16 +9,18 @@ const List = ({ columns, rows, error }) => {
 
   return (
     <div>
-      <div>
+      <div className={styles.columns}>
         {columns.map((column, index) => (
           <div key={index}>{column}</div>
         ))}
       </div>
       <div>
         {rows.map((elements, index) => (
-          <div key={index}>
+          <div key={index} className={styles.row}>
             {elements.map((element, elementIndex) => (
-              <div key={elementIndex}>{element}</div>
+              <div key={elementIndex} className={styles.column}>
+                {element}
+              </div>
             ))}
           </div>
         ))}

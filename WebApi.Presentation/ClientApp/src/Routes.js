@@ -22,31 +22,32 @@ const Routes = () => {
   const isLoggedIn = token !== null;
 
   const publicRoutes = (
-    <Route path="/" element={<Layout />}>
+    <>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/ads" element={<Ads />} />
-      <Route path="/ads/:id" element={<Ad />} />
       <Route path="/add" element={<AddAd />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
+    </>
   );
 
   const privateRoutes = (
-    <Route path="/" element={<Layout isPrivateRoute />}>
+    <>
       <Route path="/" element={<Ads />} />
-      <Route path="/ads" element={<Ads />} />
-      <Route path="/ads/:id" element={<Ad />} />
-      <Route path="/ads/add" element={<AddAd />} />
       <Route path="/ads/:id/edit" element={<EditAd />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
+    </>
   );
 
   return (
     <RoutesDom>
       <Route path="/" element={<Main />}>
-        {isLoggedIn ? privateRoutes : publicRoutes}
+        <Route path="/" element={<Layout isPrivateRoute={isLoggedIn} />}>
+          <Route path="/ads" element={<Ads />} />
+          <Route path="/ads/:id" element={<Ad />} />
+          <Route path="/ads/add" element={<AddAd />} />
+
+          {isLoggedIn ? privateRoutes : publicRoutes}
+
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Route>
     </RoutesDom>
   );
