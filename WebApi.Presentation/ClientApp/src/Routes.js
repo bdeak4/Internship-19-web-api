@@ -21,16 +21,13 @@ const Routes = () => {
   const isLoggedIn = token !== null;
 
   const publicRoutes = (
-    <>
+    <Route path="/" element={<Layout />}>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-
-      <Route path="/" element={<Layout />}>
-        <Route path="/ads" element={<Ads />} />
-        <Route path="/ads/:id" element={<Ad />} />
-        <Route path="/add" element={<AddAd />} />
-      </Route>
-    </>
+      <Route path="/ads" element={<Ads />} />
+      <Route path="/ads/:id" element={<Ad />} />
+      <Route path="/add" element={<AddAd />} />
+    </Route>
   );
 
   const privateRoutes = (

@@ -8,7 +8,6 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class AdController : ControllerBase
 {
     private readonly IAdRepository _adRepository;
@@ -20,7 +19,7 @@ public class AdController : ControllerBase
 
     [HttpGet]
     
-    public IActionResult GetAll(string? title, int? minPrice, int? maxPrice, int? categoryId, string? county, string? city, SortType? sort)
+    public IActionResult GetAll(string? title, int? minPrice, int? maxPrice, int? categoryId, int? ownerId, string? county, string? city, SortType? sort)
     {
         var filter = new AdFilterModel
         {
@@ -28,6 +27,7 @@ public class AdController : ControllerBase
             MinPrice = minPrice,
             MaxPrice = maxPrice,
             CategoryId = categoryId,
+            OwnerId = ownerId,
             County = county,
             City = city
         };
@@ -57,6 +57,7 @@ public class AdController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize]
     public IActionResult EditAd(int id, AdModel ad)
     {
         var editedAd = _adRepository.EditAd(id, ad);
@@ -70,6 +71,7 @@ public class AdController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize]
     public IActionResult RemoveAd(int id)
     {
         var isSuccessful = _adRepository.DeleteAd(id);

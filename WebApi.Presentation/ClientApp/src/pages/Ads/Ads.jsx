@@ -56,7 +56,7 @@ const Ads = () => {
     <div className={styles.wrapper}>
       <div className={styles.heading}>
         <h1>Ads</h1>
-        <Action renderAs="Link" props={{ to: "/Ads/add" }}>
+        <Action renderAs="Link" props={{ to: "/ads/add" }}>
           Add Ad
         </Action>
       </div>

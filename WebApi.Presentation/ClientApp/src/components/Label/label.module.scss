@@ -2,13 +2,13 @@
 @import "../../styles/variables";
 
 .label {
-  color: map-get($colors, "black");
+  color: map-get($colors, "fg");
   display: block;
   margin: 8px 0px;
   font-size: 18px;
 }
 
 .astrix {
-  color: map-get($colors, "danger");
+  color: map-get($colors, "failure");
   font-weight: 600;
 }

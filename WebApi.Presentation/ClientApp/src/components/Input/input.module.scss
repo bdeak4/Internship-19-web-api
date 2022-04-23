@@ -13,12 +13,12 @@
   width: 100%;
 
   &--error {
-    border-color: map-get($colors, "danger");
+    border-color: map-get($colors, "failure");
   }
 }
 
 .error {
-  color: map-get($colors, "danger");
+  color: map-get($colors, "failure");
   font-size: 14px;
   font-weight: 600;
   margin-top: 4px;

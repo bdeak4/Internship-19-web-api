@@ -9,6 +9,7 @@ public class AdFilterModel
     public int? MinPrice { get; set; }
     public int? MaxPrice { get; set; }
     public int? CategoryId { get; set; }
+    public int? OwnerId { get; set; }
     public string? County { get; set; }
     public string? City { get; set; }
 }
@@ -23,6 +24,7 @@ public static class AdFilterExtensionMethods
                 && (ad.Price >= filter.MinPrice || filter.MinPrice == null)
                 && (ad.Price <= filter.MaxPrice || filter.MaxPrice == null)
                 && (ad.CategoryId == filter.CategoryId || filter.CategoryId == null)
+                && (ad.CategoryId == filter.OwnerId || filter.OwnerId == null)
                 && (ad.County == filter.County || filter.County == null)
                 && (ad.City == filter.City || filter.City == null)
             );

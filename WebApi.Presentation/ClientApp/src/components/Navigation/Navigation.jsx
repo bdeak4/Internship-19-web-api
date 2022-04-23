@@ -18,11 +18,24 @@ const Navigation = ({ isPrivateRoute }) => {
           Ads
         </Action>
       </li>
-      {isPrivateRoute && (
+      {isPrivateRoute ? (
         <>
           <li className={styles.end}>{email}</li>
           <li>
             <Action props={{ onClick: logOut }}>Log out</Action>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className={styles.end}>
+            <Action renderAs="Link" props={{ to: "/" }}>
+              Login
+            </Action>
+          </li>
+          <li>
+            <Action renderAs="Link" props={{ to: "/register" }}>
+              Register
+            </Action>
           </li>
         </>
       )}

@@ -22,7 +22,6 @@ public class AdRepository : IAdRepository
     {
         var ads = _webApiAdContext
             .Ads
-            .Where(a => a.OwnerId == _userProviderService.GetUserId())
             .ApplyFilter(filter)
             .ApplySort(sort)
             .Select(ad => ad.ProjectToFilterResponseModel())
