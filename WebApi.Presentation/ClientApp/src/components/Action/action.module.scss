@@ -3,24 +3,34 @@
 
 .action {
   border-width: 0;
-  padding: 8px 14px;
-  font-size: 20px;
-  border-radius: 8px;
-  text-decoration: none;
+  padding: 0;
+
+  // border-width: 0;
+  // padding: 8px 14px;
+  font-size: 16px;
+  // border-radius: 8px;
+  color: map-get($colors, "fg");
   background-color: transparent;
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 
-  &.action--primary {
-    color: map-get($colors, "primary-text");
-    background-color: map-get($colors, "primary");
+  &:hover {
+    text-decoration: none;
+    // text-decoration-color: map-get($colors, "main");
   }
 
-  &.action--info {
-    color: map-get($colors, "info");
-  }
+  // &.action--primary {
+  //   color: map-get($colors, "primary-text");
+  //   background-color: map-get($colors, "primary");
+  // }
 
-  &.action--danger {
-    color: map-get($colors, "primary-text");
-    background-color: map-get($colors, "danger");
-  }
+  // &.action--info {
+  //   color: map-get($colors, "info");
+  // }
+
+  // &.action--danger {
+  //   color: map-get($colors, "primary-text");
+  //   background-color: map-get($colors, "danger");
+  // }
 }

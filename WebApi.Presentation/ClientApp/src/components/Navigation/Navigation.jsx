@@ -13,13 +13,13 @@ const Navigation = () => {
 
   return (
     <ul className={styles.navigation}>
-      <li>{email}</li>
       <li>
-        <Action renderAs="Link" variant="info" props={{ to: "/todos" }}>
-          Todos
+        <Action renderAs="Link" props={{ to: "/ads" }}>
+          Ads
         </Action>
       </li>
-      <li className={styles.end}>
+      <li className={styles.end}>{email}</li>
+      <li>
         <Action props={{ onClick: logOut }}>Log out</Action>
       </li>
     </ul>
