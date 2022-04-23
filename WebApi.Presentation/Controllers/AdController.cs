@@ -7,7 +7,7 @@ using WebApi.Domain.Repositories.Interfaces;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 [Authorize]
 public class AdController : ControllerBase
 {

@@ -53,7 +53,7 @@ public class AdRepository : IAdRepository
 
     public AdResponseModel AddAd(AdModel model)
     {
-        var ad = model.ProjectToAd();
+        var ad = model.ProjectToAd(_userProviderService.GetUserId());
 
         _webApiAdContext.Ads.Add(ad);
         _webApiAdContext.SaveChanges();
@@ -77,7 +77,6 @@ public class AdRepository : IAdRepository
         ad.County = model.County;
         ad.Street = model.Street;
         ad.CategoryId = model.CategoryId;
-        ad.OwnerId = model.OwnerId;
 
         _webApiAdContext.SaveChanges();
 

@@ -12,12 +12,12 @@ public class AdModel
     public string County { get; set; } = string.Empty;
     public string Street { get; set; } = string.Empty;
     public int? CategoryId { get; set; }
-    public int? OwnerId { get; set; }
 }
 
 public class AdResponseModel : AdModel
 {
     public int Id { get; set; }
+    public int? OwnerId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
@@ -38,7 +38,7 @@ public class AdFilterResponseModel
 
 public static class AdExtensionMethods
 {
-    public static Ad ProjectToAd(this AdModel model)
+    public static Ad ProjectToAd(this AdModel model, int ownerId)
     {
         return new Ad
         {
@@ -49,10 +49,10 @@ public static class AdExtensionMethods
             County = model.County,
             Street = model.Street,
             CategoryId = model.CategoryId,
-            OwnerId = model.OwnerId,
+            OwnerId = ownerId,
         };
     }
-    
+
     public static AdResponseModel ProjectToResponseModel(this Ad ad)
     {
         return new AdResponseModel

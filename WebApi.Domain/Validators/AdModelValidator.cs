@@ -18,10 +18,5 @@ public class AdModelValidator : AbstractValidator<AdModel>
             .Must(adCategoryRepository.AdCategoryExists)
             .When(ad => ad.CategoryId != null)
             .WithMessage("Category with categoryId must exist");
-        
-        RuleFor(ad => ad.OwnerId)
-            .Must(adOwnerRepository.AdOwnerExists)
-            .When(ad => ad.OwnerId != null)
-            .WithMessage("Owner with ownerId must exist");
     }
 }
