@@ -5,7 +5,7 @@ import Action from "../Action";
 
 import styles from "./navigation.module.scss";
 
-const Navigation = () => {
+const Navigation = ({ isPrivateRoute }) => {
   const {
     state: { email },
     logOut,
@@ -14,14 +14,18 @@ const Navigation = () => {
   return (
     <ul className={styles.navigation}>
       <li>
-        <Action renderAs="Link" props={{ to: "/" }}>
+        <Action renderAs="Link" props={{ to: "/ads" }}>
           Ads
         </Action>
       </li>
-      <li className={styles.end}>{email}</li>
-      <li>
-        <Action props={{ onClick: logOut }}>Log out</Action>
-      </li>
+      {isPrivateRoute && (
+        <>
+          <li className={styles.end}>{email}</li>
+          <li>
+            <Action props={{ onClick: logOut }}>Log out</Action>
+          </li>
+        </>
+      )}
     </ul>
   );
 };

@@ -5,18 +5,18 @@ import Navigation from "../Navigation";
 
 import styles from "./layout.module.scss";
 
-const Layout = () => {
+const Layout = ({ isPrivateRoute }) => {
   const {
     state: { token },
   } = useContext(UserContext);
 
-  if (!token) {
+  if (!token && isPrivateRoute) {
     return <Navigate to="/" />;
   }
 
   return (
     <div className={styles.layout}>
-      <Navigation />
+      <Navigation isPrivateRoute={isPrivateRoute} />
       <Outlet />
     </div>
   );

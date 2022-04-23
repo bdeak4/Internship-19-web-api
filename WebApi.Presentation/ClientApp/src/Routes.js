@@ -20,8 +20,21 @@ const Routes = () => {
 
   const isLoggedIn = token !== null;
 
-  const application = (
-    <Route path="/" element={<Layout />}>
+  const publicRoutes = (
+    <>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      <Route path="/" element={<Layout />}>
+        <Route path="/ads" element={<Ads />} />
+        <Route path="/ads/:id" element={<Ad />} />
+        <Route path="/add" element={<AddAd />} />
+      </Route>
+    </>
+  );
+
+  const privateRoutes = (
+    <Route path="/" element={<Layout isPrivateRoute />}>
       <Route path="/" element={<Ads />} />
       <Route path="/ads" element={<Ads />} />
       <Route path="/ads/:id" element={<Ad />} />
@@ -33,8 +46,7 @@ const Routes = () => {
   return (
     <RoutesDom>
       <Route path="/" element={<Main />}>
-        {isLoggedIn ? application : <Route path="/" element={<Login />} />}
-        <Route path="/register" element={<Register />} />
+        {isLoggedIn ? privateRoutes : publicRoutes}
       </Route>
     </RoutesDom>
   );
