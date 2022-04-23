@@ -14,7 +14,7 @@ const Navigation = () => {
   return (
     <ul className={styles.navigation}>
       <li>
-        <Action renderAs="Link" props={{ to: "/ads" }}>
+        <Action renderAs="Link" props={{ to: "/" }}>
           Ads
         </Action>
       </li>
