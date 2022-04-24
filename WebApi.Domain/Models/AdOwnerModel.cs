@@ -36,6 +36,7 @@ public class AdOwnerRegisterModel
     [Required]
     public string Email { get; set; } = String.Empty;
     [Required]
+    [MinLength(6)]
     public string Password { get; set; } = String.Empty;
     [Required]
     public string RepeatPassword { get; set; } = String.Empty;

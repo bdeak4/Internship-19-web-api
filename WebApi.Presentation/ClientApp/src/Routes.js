@@ -31,6 +31,7 @@ const Routes = () => {
   const privateRoutes = (
     <>
       <Route path="/" element={<Ads />} />
+      <Route path="/ads/add" element={<AddAd />} />
       <Route path="/ads/:id/edit" element={<EditAd />} />
     </>
   );
@@ -41,7 +42,6 @@ const Routes = () => {
         <Route path="/" element={<Layout isPrivateRoute={isLoggedIn} />}>
           <Route path="/ads" element={<Ads />} />
           <Route path="/ads/:id" element={<Ad />} />
-          <Route path="/ads/add" element={<AddAd />} />
 
           {isLoggedIn ? privateRoutes : publicRoutes}
 
