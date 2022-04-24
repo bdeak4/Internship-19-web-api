@@ -25,7 +25,11 @@ const Navigation = ({ isPrivateRoute }) => {
       </li>
       {isPrivateRoute ? (
         <>
-          <li className={styles.end}>{email}</li>
+          <li className={styles.end}>
+            <Action renderAs="Link" props={{ to: "/profile" }}>
+              {email}
+            </Action>
+          </li>
           <li>
             <Action props={{ onClick: logOut }}>Log out</Action>
           </li>

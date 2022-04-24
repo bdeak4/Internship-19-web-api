@@ -35,31 +35,16 @@ const Filter = ({ filter, setFilter }) => {
         />
         <select
           className={styles.select}
+          value={filter.sort}
           onChange={(e) =>
             setFilter((prev) => ({ ...prev, sort: e.target.value }))
           }
         >
-          <option value="" selected={!filter.sort}>
-            --
-          </option>
-          <option value="PriceAsc" selected={filter.sort === "PriceAsc"}>
-            PriceAsc
-          </option>
-          <option value="PriceDesc" selected={filter.sort === "PriceDesc"}>
-            PriceDesc
-          </option>
-          <option
-            value="CreatedAtAsc"
-            selected={filter.sort === "CreatedAtAsc"}
-          >
-            CreatedAtAsc
-          </option>
-          <option
-            value="CreatedAtDesc"
-            selected={filter.sort === "CreatedAtDesc"}
-          >
-            CreatedAtDesc
-          </option>
+          <option value="">--</option>
+          <option value="PriceAsc">PriceAsc</option>
+          <option value="PriceDesc">PriceDesc</option>
+          <option value="CreatedAtAsc">CreatedAtAsc</option>
+          <option value="CreatedAtDesc">CreatedAtDesc</option>
         </select>
       </div>
     </div>

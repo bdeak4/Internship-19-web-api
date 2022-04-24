@@ -13,6 +13,7 @@ import Categories from "./pages/Categories";
 import Category from "./pages/Categories/Category";
 
 import { UserContext } from "./providers/UserProvider";
+import Profile from "./pages/Profile";
 
 const Main = () => <Outlet />;
 
@@ -35,6 +36,7 @@ const Routes = () => {
       <Route path="/" element={<Ads />} />
       <Route path="/ads/add" element={<AddAd />} />
       <Route path="/ads/:id/edit" element={<EditAd />} />
+      <Route path="/profile" element={<Profile />} />
     </>
   );
 
