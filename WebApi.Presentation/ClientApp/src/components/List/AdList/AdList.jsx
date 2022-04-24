@@ -18,7 +18,7 @@ const AdList = ({ defaultFilter = {} }) => {
     isSuccessful: isDeleteSuccessful,
   } = useDeleteAd();
   const {
-    state: { id: userId, token },
+    state: { id: userId },
   } = useContext(UserContext);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const AdList = ({ defaultFilter = {} }) => {
         </Action>,
         <span>{data.price} kn</span>,
         <span>{data.description}</span>,
-        data.ownerId === userId && token !== null && (
+        data.ownerId === userId && (
           <div>
             <Action
               variant="inverted"

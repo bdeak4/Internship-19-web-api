@@ -22,6 +22,8 @@ public class AdRepository : IAdRepository
     {
         var ads = _webApiAdContext
             .Ads
+            .Where(ad => ad.DeletedAt == null)
+            .Where(ad => ad.CreatedAt >= DateTime.Now.AddDays(-60))
             .ApplyFilter(filter)
             .ApplySort(sort)
             .Select(ad => ad.ProjectToFilterResponseModel())
@@ -34,6 +36,8 @@ public class AdRepository : IAdRepository
     {
         var ad = _webApiAdContext
             .Ads
+            .Where(ad => ad.DeletedAt == null)
+            .Where(ad => ad.CreatedAt >= DateTime.Now.AddDays(-60))
             .Where(a => a.OwnerId == _userProviderService.GetUserId())
             .Include(ad => ad.Category)
             .Include(ad => ad.Owner)
@@ -91,7 +95,8 @@ public class AdRepository : IAdRepository
             return false;
         }
 
-        _webApiAdContext.Ads.Remove(ad);
+        ad.DeletedAt = DateTime.Now;
+
         _webApiAdContext.SaveChanges();
 
         return true;

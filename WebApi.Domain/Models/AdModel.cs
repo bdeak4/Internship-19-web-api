@@ -34,6 +34,7 @@ public class AdFilterResponseModel
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int Price { get; set; }
+    public int? OwnerId { get; set; }
 }
 
 public static class AdExtensionMethods
@@ -98,6 +99,7 @@ public static class AdExtensionMethods
             Title = ad.Title,
             Description = ad.Description.Length > 100 ? ad.Description.Substring(0, 100) : ad.Description,
             Price = ad.Price,
+            OwnerId = ad.OwnerId,
         };
     }
 }

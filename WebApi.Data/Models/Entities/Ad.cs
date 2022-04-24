@@ -11,6 +11,7 @@ public class Ad
     public string Street { get; set; } = string.Empty;
     public int ViewCounter { get; set; } = 0;
     public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime? DeletedAt { get; set; } = null;
     
     public int? CategoryId { get; set; }
     public AdCategory? Category { get; set; }
