@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+
+  & > * {
+    width: 33.3333%;
+    margin-bottom: 8px;
+  }
+
+  & > *:not(:last-child) {
+    width: calc(33.3333% - 8px);
+    margin-right: 8px;
+  }
+}
+
+.select {
+  display: block;
+  padding: 8px 12px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-size: 16px;
+
+  &:focus {
+    outline: 3px solid orangered;
+  }
+}

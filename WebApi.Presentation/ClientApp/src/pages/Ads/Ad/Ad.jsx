@@ -14,12 +14,12 @@ const Ad = () => {
     isLoading: adDetailIsLoading,
   } = useGetAdDetail(id);
 
-  if (adDetailIsLoading || !adDetail) {
-    return <Loader />;
-  }
-
   if (adDetailError) {
     return <span className="error">Issue getting ad details</span>;
+  }
+
+  if (adDetailIsLoading || !adDetail) {
+    return <Loader />;
   }
 
   return (
