@@ -15,6 +15,10 @@ html {
   box-sizing: border-box;
 }
 
+::selection {
+  background-color: map-get($colors, "main");
+}
+
 body {
   margin: unset;
   color: map-get($colors, "fg");
