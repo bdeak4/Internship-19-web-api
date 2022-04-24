@@ -12,6 +12,7 @@ public class AdCategoryModel
 public class AdCategoryResponseModel : AdCategoryModel
 {
     public int Id { get; set; }
+    public int AdCount { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
@@ -40,6 +41,7 @@ public static class AdCategoryExtensionMethods
             Title = adCategory.Title,
             Type = adCategory.Type,
             CreatedAt = adCategory.CreatedAt,
+            AdCount = adCategory.Ads.Count,
         };
     }
     

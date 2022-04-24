@@ -9,6 +9,7 @@ import EditAd from "./pages/Ads/EditAd";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Categories from "./pages/Categories";
 
 import { UserContext } from "./providers/UserProvider";
 
@@ -42,6 +43,7 @@ const Routes = () => {
         <Route path="/" element={<Layout isPrivateRoute={isLoggedIn} />}>
           <Route path="/ads" element={<Ads />} />
           <Route path="/ads/:id" element={<Ad />} />
+          <Route path="/categories" element={<Categories />} />
 
           {isLoggedIn ? privateRoutes : publicRoutes}
 

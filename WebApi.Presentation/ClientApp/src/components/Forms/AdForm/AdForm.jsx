@@ -110,7 +110,7 @@ const AdForm = ({
                 key={category.id}
                 selected={category.id === categoryId}
               >
-                [{category.type}] {category.title}
+                [{category.type}] {category.title} ({category.adCount})
               </option>
             ))}
           </select>

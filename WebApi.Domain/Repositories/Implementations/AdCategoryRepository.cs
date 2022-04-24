@@ -18,6 +18,7 @@ public class AdCategoryRepository : IAdCategoryRepository
     {
         var adCategories = _webApiAdContext
             .AdCategories
+            .Include(c => c.Ads)
             .Select(c => c.ProjectToResponseModel())
             .ToList();
         
