@@ -41,7 +41,7 @@ public static class AdCategoryExtensionMethods
             Title = adCategory.Title,
             Type = adCategory.Type,
             CreatedAt = adCategory.CreatedAt,
-            AdCount = adCategory.Ads.Count,
+            AdCount = adCategory.Ads.Where(ad => ad.DeletedAt == null).ToList().Count,
         };
     }
     

@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Categories from "./pages/Categories";
+import Category from "./pages/Categories/Category";
 
 import { UserContext } from "./providers/UserProvider";
 
@@ -44,6 +45,7 @@ const Routes = () => {
           <Route path="/ads" element={<Ads />} />
           <Route path="/ads/:id" element={<Ad />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:id" element={<Category />} />
 
           {isLoggedIn ? privateRoutes : publicRoutes}
 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useGetAdCategories } from "src/api/useAdCategory";
 import Action from "src/components/Action";
 import List from "src/components/List";
