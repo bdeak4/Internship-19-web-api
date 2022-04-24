@@ -1,7 +1,8 @@
 import { useFetch } from "src/hooks/useFetch";
 import { useGet } from "src/hooks/useGet";
 
-export const useGetAds = () => useGet("api/Ad");
+export const useGetAds = (filter = {}) =>
+  useGet("api/Ad?" + new URLSearchParams(filter).toString());
 
 export const useAddAd = () => useFetch("api/Ad/", "POST");
 

@@ -9,11 +9,13 @@ const List = ({ columns, rows, error }) => {
 
   return (
     <div>
-      <div className={styles.columns}>
-        {columns.map((column, index) => (
-          <div key={index}>{column}</div>
-        ))}
-      </div>
+      {!!rows.length && (
+        <div className={styles.columns}>
+          {columns.map((column, index) => (
+            <div key={index}>{column}</div>
+          ))}
+        </div>
+      )}
       <div>
         {rows.map((elements, index) => (
           <div key={index} className={styles.row}>
@@ -24,7 +26,7 @@ const List = ({ columns, rows, error }) => {
             ))}
           </div>
         ))}
-        {!rows.length && <span>Ad list empty :/</span>}
+        {!rows.length && <div className={styles.empty}>Ad list empty :/</div>}
       </div>
     </div>
   );

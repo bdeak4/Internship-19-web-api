@@ -20,7 +20,7 @@ public static class AdFilterExtensionMethods
     {
         return adQueryable
             .Where(ad =>
-                (ad.Title == filter.Title || filter.Title == null)
+                (filter.Title == null || (ad.Title+ad.Description).Contains(filter.Title))
                 && (ad.Price >= filter.MinPrice || filter.MinPrice == null)
                 && (ad.Price <= filter.MaxPrice || filter.MaxPrice == null)
                 && (ad.CategoryId == filter.CategoryId || filter.CategoryId == null)

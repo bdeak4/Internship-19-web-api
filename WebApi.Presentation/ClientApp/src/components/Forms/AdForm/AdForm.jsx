@@ -101,7 +101,7 @@ const AdForm = ({
       />
 
       <div>
-        <Label htmlFor="categoryId" text="Category ID" />
+        <Label htmlFor="categoryId" text="Category" />
         {!categoryError && !categoryIsLoading && categoryData && (
           <select {...register("categoryId")} className={styles.select}>
             {categoryData.map((category) => (
