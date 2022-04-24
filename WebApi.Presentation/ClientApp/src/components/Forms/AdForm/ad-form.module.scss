@@ -1,11 +1,28 @@
 .form {
   max-width: 400px;
-  padding: 16px 8px;
-  margin: auto;
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 20px;
+}
+
+.messages {
+  margin-top: 16px;
+}
+
+.select {
+  width: 100%;
+  display: block;
+  padding: 8px 12px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-size: 16px;
+
+  &:focus {
+    outline: 3px solid orangered;
+  }
 }

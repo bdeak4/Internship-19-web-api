@@ -6,14 +6,17 @@
 }
 
 .input {
-  display: block;
-  border-radius: 8px;
-  border-width: 1px;
-  font-size: 18px;
   width: 100%;
+  display: block;
+  padding: 8px 12px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-size: 16px;
 
-  &--error {
-    border-color: map-get($colors, "failure");
+  &:focus {
+    outline: 3px solid orangered;
   }
 }
 

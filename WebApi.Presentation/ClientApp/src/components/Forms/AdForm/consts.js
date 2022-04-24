@@ -4,6 +4,7 @@ export const InputName = Object.freeze({
   price: "price",
   city: "city",
   county: "county",
+  street: "street",
 });
 
 export const schema = {
