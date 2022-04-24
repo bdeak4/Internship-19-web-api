@@ -66,15 +66,14 @@ const RegisterForm = () => {
         label="Repeat password"
         inputType="password"
       />
-      {error && <span className="error">{error}</span>}
-      {isSuccessful && (
-        <span className="success">Successfully registered!</span>
-      )}
+      <div className={styles.messages}>
+        {error && <span className="error">{error}</span>}
+        {isSuccessful && (
+          <span className="success">Successfully registered!</span>
+        )}
+      </div>
       <div className={styles.actions}>
-        <Action variant="info" renderAs="Link" props={{ to: "/" }}>
-          Login
-        </Action>
-        <Action variant="primary" props={{ type: "submit" }}>
+        <Action variant="fill" props={{ type: "submit" }}>
           Register
         </Action>
       </div>

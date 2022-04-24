@@ -7,7 +7,6 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class AdCategoryController : ControllerBase
 {
     private readonly IAdCategoryRepository _adCategoryRepository;
@@ -39,6 +38,7 @@ public class AdCategoryController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult AddAdCategory(AdCategoryModel adCategory)
     {
         var addedAdCategory = _adCategoryRepository.AddAdCategory(adCategory);
@@ -46,6 +46,7 @@ public class AdCategoryController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize]
     public IActionResult EditAdCategory(int id, AdCategoryModel adCategory)
     {
         var editedAdCategory = _adCategoryRepository.EditAdCategory(id, adCategory);
@@ -59,6 +60,7 @@ public class AdCategoryController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize]
     public IActionResult RemoveAdCategory(int id)
     {
         var isSuccessful = _adCategoryRepository.DeleteAdCategory(id);

@@ -53,13 +53,12 @@ const LoginForm = () => {
         label="Password"
         inputType="password"
       />
-      {error && <span className="error">{error}</span>}
-      {isSuccessful && <span className="success">Success!</span>}
+      <div className={styles.messages}>
+        {error && <span className="error">{error}</span>}
+        {isSuccessful && <span className="success">Success!</span>}
+      </div>
       <div className={styles.actions}>
-        <Action variant="info" renderAs="Link" props={{ to: "/register" }}>
-          Register
-        </Action>
-        <Action variant="primary" props={{ type: "submit" }}>
+        <Action variant="fill" props={{ type: "submit" }}>
           Login
         </Action>
       </div>

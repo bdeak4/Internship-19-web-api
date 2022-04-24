@@ -1,11 +1,13 @@
 .form {
   max-width: 400px;
-  padding: 16px 8px;
-  margin: auto;
+}
+
+.messages {
+  margin-top: 16px;
 }
 
 .actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
+  justify-content: flex-end;
+  margin-top: 20px;
 }

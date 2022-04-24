@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useDeleteAd, useGetAds } from "src/api/useAd";
 import Action from "src/components/Action";
 
 import List from "src/components/List";
 import Loader from "src/components/Loader";
+import { UserContext } from "src/providers/UserProvider";
 
 import styles from "./ads.module.scss";
 
@@ -16,6 +17,9 @@ const Ads = () => {
     isLoading: isDeleteLoading,
     isSuccessful: isDeleteSuccessful,
   } = useDeleteAd();
+  const {
+    state: { id: userId, token },
+  } = useContext(UserContext);
 
   useEffect(() => {
     if (isDeleteSuccessful) {
@@ -36,25 +40,27 @@ const Ads = () => {
         </Action>,
         <span>{data.price} kn</span>,
         <span>{data.description}</span>,
-        <div>
-          <Action
-            variant="inverted"
-            renderAs="Link"
-            props={{ to: `/ads/${data.id}/edit` }}
-          >
-            Edit
-          </Action>{" "}
-          <Action
-            variant="danger"
-            props={{
-              onClick: () => {
-                handleDelete(null, `/${data.id}`);
-              },
-            }}
-          >
-            Delete
-          </Action>
-        </div>,
+        data.ownerId === userId && token !== null && (
+          <div>
+            <Action
+              variant="inverted"
+              renderAs="Link"
+              props={{ to: `/ads/${data.id}/edit` }}
+            >
+              Edit
+            </Action>{" "}
+            <Action
+              variant="danger"
+              props={{
+                onClick: () => {
+                  handleDelete(null, `/${data.id}`);
+                },
+              }}
+            >
+              Delete
+            </Action>
+          </div>
+        ),
       ])
     : [];
 
